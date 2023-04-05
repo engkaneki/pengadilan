@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2023 at 10:26 AM
+-- Generation Time: Apr 05, 2023 at 06:49 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -29,17 +29,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `berkas` (
   `id` int(11) NOT NULL,
-  `noreg` varchar(50) NOT NULL,
   `nik` varchar(30) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `alamat` text NOT NULL,
-  `ktp` varchar(255) NOT NULL,
-  `kk` varchar(255) NOT NULL,
-  `akta` varchar(255) NOT NULL,
-  `tgl_pengajuan` date NOT NULL,
   `status` varchar(10) NOT NULL,
-  `keterangan` text NOT NULL,
-  `petugas` varchar(200) NOT NULL,
+  `keterangan` text DEFAULT NULL,
+  `ktp` varchar(200) DEFAULT NULL,
+  `kk` varchar(200) DEFAULT NULL,
+  `akta` varchar(200) DEFAULT NULL,
+  `instansi` varchar(200) NOT NULL,
+  `petugas` varchar(20) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -48,8 +47,13 @@ CREATE TABLE `berkas` (
 -- Dumping data for table `berkas`
 --
 
-INSERT INTO `berkas` (`id`, `noreg`, `nik`, `nama`, `alamat`, `ktp`, `kk`, `akta`, `tgl_pengajuan`, `status`, `keterangan`, `petugas`, `created_at`, `updated_at`) VALUES
-(1, '1219/pa/02042023/001', '1219104050690007', 'Wanda Wandi', 'Dsn. I Desa Ujung Kubu Kec. Air Putih Kab. Batu Bara', '', '', '', '2023-04-03', 'pending', '', '', '2023-04-03 09:53:30', '2023-04-03 09:53:30');
+INSERT INTO `berkas` (`id`, `nik`, `nama`, `alamat`, `status`, `keterangan`, `ktp`, `kk`, `akta`, `instansi`, `petugas`, `created_at`, `updated_at`) VALUES
+(6, '1231232131', 'Wanda Wandi', 'asdfsaf', 'Diproses', NULL, 'uploads/Bd4VcSSoPnLGAjN9GbnbvsDMYTOw1G5xIM1wtZCu.jpg', 'uploads/2sldlFX8HkmrFDIDjvzmWX2mbZmzBzkVAMVSdSRt.jpg', 'uploads/ocFB60ZVPfHlAgSrvsmTPZoPk29SWmr2e6FOjw1x.jpg', '', '', '2023-04-03 14:47:22', '2023-04-03 14:47:48'),
+(7, '1219010203780001', 'Sal Priadi', 'Disini dan disana', 'Diproses', NULL, 'uploads/mOZcBMTdazgtnaDmhy4kQu0QHN5ewrQ1VK1OvXQB.jpg', 'uploads/9g9I6JCqWQyipzzg0UcYXPIkTMNcLwLAvwHznpjO.jpg', 'uploads/DNMEUWH5GpipbpuIBAmDe7JRxvxdImCncweMm977.jpg', 'Pengadilan Agama', NULL, '2023-04-05 15:16:04', '2023-04-05 15:16:47'),
+(8, '1231232131', 'Wanda Wandi', 'asdfsaf', 'Selesai', NULL, 'uploads/Bd4VcSSoPnLGAjN9GbnbvsDMYTOw1G5xIM1wtZCu.jpg', 'uploads/2sldlFX8HkmrFDIDjvzmWX2mbZmzBzkVAMVSdSRt.jpg', 'uploads/ocFB60ZVPfHlAgSrvsmTPZoPk29SWmr2e6FOjw1x.jpg', '', '', '2023-04-05 14:47:22', '2023-04-05 14:47:48'),
+(9, '1219010203780001', 'Sal Priadi', 'Disini dan disana', 'Selesai', NULL, 'uploads/mOZcBMTdazgtnaDmhy4kQu0QHN5ewrQ1VK1OvXQB.jpg', 'uploads/9g9I6JCqWQyipzzg0UcYXPIkTMNcLwLAvwHznpjO.jpg', 'uploads/DNMEUWH5GpipbpuIBAmDe7JRxvxdImCncweMm977.jpg', 'Pengadilan Agama', NULL, '2023-04-05 15:16:04', '2023-04-05 15:16:47'),
+(10, '1231232131', 'Wanda Wandi', 'asdfsaf', 'Ditolak', NULL, 'uploads/Bd4VcSSoPnLGAjN9GbnbvsDMYTOw1G5xIM1wtZCu.jpg', 'uploads/2sldlFX8HkmrFDIDjvzmWX2mbZmzBzkVAMVSdSRt.jpg', 'uploads/ocFB60ZVPfHlAgSrvsmTPZoPk29SWmr2e6FOjw1x.jpg', '', '', '2023-04-05 14:47:22', '2023-04-05 14:47:48'),
+(11, '1219010203780001', 'Sal Priadi', 'Disini dan disana', 'ditolak', NULL, 'uploads/mOZcBMTdazgtnaDmhy4kQu0QHN5ewrQ1VK1OvXQB.jpg', 'uploads/9g9I6JCqWQyipzzg0UcYXPIkTMNcLwLAvwHznpjO.jpg', 'uploads/DNMEUWH5GpipbpuIBAmDe7JRxvxdImCncweMm977.jpg', 'Pengadilan Agama', NULL, '2023-04-05 15:16:04', '2023-04-05 15:16:47');
 
 -- --------------------------------------------------------
 
@@ -201,7 +205,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `berkas`
 --
 ALTER TABLE `berkas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`

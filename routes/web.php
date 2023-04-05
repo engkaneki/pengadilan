@@ -35,9 +35,16 @@ Route::middleware(['auth', 'cekUserLogin:1'])->group(function () {
 });
 
 Route::middleware(['auth', 'cekUserLogin:2'])->group(function () {
-    Route::get('/', [PengadilanController::class, 'index']);
-    Route::get('/pengadilan', [PengadilanController::class, 'index']);
-    Route::get('/pengajuan', [PengadilanController::class, 'pengajuan']);
+    Route::controller(PengadilanController::class)->group(function () {
+        Route::get('/', 'index');
+        Route::get('/pengadilan', 'index');
+        Route::get('/pengajuan', 'pengajuan');
+        Route::get('/pengajuan/selesai', 'selesai');
+        Route::get('/pengajuan/ditolak', 'ditolak');
+        Route::post('/pengajuan/simpan', 'save');
+        Route::get('/pengajuan/edit', 'edit');
+        Route::delete('/pengajuan/hapus/{id}', 'delete');
+    });
 });
 
 Route::middleware(['auth', 'cekUserLogin:3'])->group(function () {

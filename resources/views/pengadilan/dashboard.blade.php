@@ -8,7 +8,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-start">
                             <div class="flex-grow-1">
-                                <h5 class="card-title mb-2">Berkas Bulan Maret 2023</h5>
+                                <h5 class="card-title mb-2">Berkas Bulan {{ $namaBulanTahun }}</h5>
                             </div>
                         </div>
 
@@ -68,76 +68,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-grow-1">Manusia 1</div>
-                                                </div>
-                                            </td>
-                                            <td>1219/pa/03032023/001</td>
-                                            <td>
-                                                <span>03 Maret 2023</span>
-                                            </td>
-                                            <td>
-                                                <div class="flex-grow-1">Selesai</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-grow-1">Manusia 2</div>
-                                                </div>
-                                            </td>
-                                            <td>1219/pa/03032023/002</td>
-                                            <td>
-                                                <span>03 Maret 2023</span>
-                                            </td>
-                                            <td>
-                                                <div class="flex-grow-1">Diproses</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-grow-1">Manusia 3</div>
-                                                </div>
-                                            </td>
-                                            <td>1219/pa/03032023/003</td>
-                                            <td>
-                                                <span>03 Maret 2023</span>
-                                            </td>
-                                            <td>
-                                                <div class="flex-grow-1">Diproses</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-grow-1">Manusia 4</div>
-                                                </div>
-                                            </td>
-                                            <td>1219/pa/03032023/004</td>
-                                            <td>
-                                                <span>03 Maret 2023</span>
-                                            </td>
-                                            <td>
-                                                <div class="flex-grow-1">Selesai</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-grow-1">Manusia 5</div>
-                                                </div>
-                                            </td>
-                                            <td>1219/pa/03032023/005</td>
-                                            <td>
-                                                <span>03 Maret 2023</span>
-                                            </td>
-                                            <td>
-                                                <div class="flex-grow-1">Ditolak</div>
-                                            </td>
-                                        </tr>
+                                        @foreach ($Berkas as $d)
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-grow-1">{{ $d->nama }}</div>
+                                                    </div>
+                                                </td>
+                                                <td>1219/pa/03032023/001</td>
+                                                <td>
+                                                    <span>{{ $d->created_at->locale('id')->isoFormat('D MMMM YYYY') }}</span>
+                                                </td>
+                                                <td>
+                                                    @if ($d->status == 'Diproses')
+                                                        <span class="badge rounded-pill bg-info">{{ $d->status }}</span>
+                                                    @elseif ($d->status == 'Selesai')
+                                                        <span
+                                                            class="badge rounded-pill bg-success">{{ $d->status }}</span>
+                                                    @else
+                                                        <span
+                                                            class="badge rounded-pill bg-danger">{{ $d->status }}</span>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

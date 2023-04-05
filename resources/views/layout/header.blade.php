@@ -102,9 +102,11 @@
                                 <div class="dropdown-menu" aria-labelledby="topnav-pages">
                                     <a href="{{ url('pengajuan') }}" class="dropdown-item"
                                         data-key="t-pages">Pengajuan Berkas</a>
-                                    <a href="#" class="dropdown-item" data-key="t-pages">Berkas
+                                    <a href="{{ url('pengajuan/selesai') }}" class="dropdown-item"
+                                        data-key="t-pages">Berkas
                                         Selesai</a>
-                                    <a href="#" class="dropdown-item" data-key="t-pages">Berkas
+                                    <a href="{{ url('pengajuan/ditolak') }}" class="dropdown-item"
+                                        data-key="t-pages">Berkas
                                         Ditolak</a>
                                 </div>
                             </li>

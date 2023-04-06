@@ -12,14 +12,22 @@ class PengadilanController extends Controller
 {
     public function index()
     {
+
         $user = Auth::user();
         $now = Carbon::now();
         $namaBulanTahun = $now->locale('id')->format('F Y');
 
+        $pendingCount = ModelPengadilan::whereMonth('created_at', '=', date('m'))->where('status', '=', 'Diproses')->count();
+        $selesaiCount = ModelPengadilan::whereMonth('created_at', '=', date('m'))->where('status', '=', 'Selesai')->count();
+        $ditolakCount = ModelPengadilan::whereMonth('created_at', '=', date('m'))->where('status', '=', 'Ditolak')->count();
+
         return view('pengadilan.dashboard')->with([
             'user' => $user,
             'Berkas' => ModelPengadilan::paginate(5)->onEachSide('1')->fragment('berkas'),
-            'namaBulanTahun' => $namaBulanTahun
+            'namaBulanTahun' => $namaBulanTahun,
+            'pendingCount' => $pendingCount,
+            'selesaiCount' => $selesaiCount,
+            'ditolakCount' => $ditolakCount
         ]);
     }
 

@@ -12,4 +12,4 @@
         @yield('content')
     </div>
 
-    @include('layout.footer')
+    @include('layout.chart')

@@ -22,7 +22,7 @@
                                     Diproses
                                 </p>
                                 <div>
-                                    <span class="pe-5">20</span>
+                                    <span class="pe-5">{{ $pendingCount }}</span>
                                 </div>
                             </div>
                             <div class="order-wid-list d-flex justify-content-between border-bottom">
@@ -30,7 +30,7 @@
                                         class="mdi mdi-square-rounded font-size-10 text-success me-2"></i>Pengajuan
                                     Selesai</p>
                                 <div>
-                                    <span class="pe-5">12</span>
+                                    <span class="pe-5">{{ $selesaiCount }}</span>
                                 </div>
                             </div>
                             <div class="order-wid-list d-flex justify-content-between">
@@ -38,7 +38,7 @@
                                         class="mdi mdi-square-rounded font-size-10 text-danger me-2"></i>Pengajuan
                                     Ditolak</p>
                                 <div>
-                                    <span class="pe-5">3</span>
+                                    <span class="pe-5">{{ $ditolakCount }}</span>
                                 </div>
                             </div>
                         </div>

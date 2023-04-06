@@ -27,21 +27,21 @@
                             <div class="col">
                                 <div class="mt-md-0 py-3 px-4 mx-2">
                                     <p class="text-white-50 mb-2 text-truncate">Total Pengajuan </p>
-                                    <h3 class="text-white mb-0">197</h3>
+                                    <h3 class="text-white mb-0">{{ $pendingCount }}</h3>
                                 </div>
                             </div><!-- end col -->
 
                             <div class="col">
                                 <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
                                     <p class="text-white-50 mb-2 text-truncate">Total Pengajuan Selesai</p>
-                                    <h3 class="text-white mb-0">180</h3>
+                                    <h3 class="text-white mb-0">{{ $selesaiCount }}</h3>
                                 </div>
                             </div><!-- end col -->
 
                             <div class="col">
                                 <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
                                     <p class="text-white-50 mb-2 text-truncate">Total Pengajuan Ditolak</p>
-                                    <h3 class="text-white mb-0">12</h3>
+                                    <h3 class="text-white mb-0">{{ $ditolakCount }}</h3>
                                 </div>
                             </div><!-- end col -->
                         </div><!-- end row -->

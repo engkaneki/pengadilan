@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header justify-content-between d-flex align-items-center">
-                    <h4 class="card-title">Data Berkas Pengajuan Ditolak</h4>
+                    <h4 class="card-title">Data Berkas Sudah di Terima</h4>
                 </div><!-- end card header -->
                 <div class="card-body">
                     <div class="table-responsive">

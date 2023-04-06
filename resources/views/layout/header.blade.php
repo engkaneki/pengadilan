@@ -121,7 +121,8 @@
                                 <div class="dropdown-menu" aria-labelledby="topnav-pages">
                                     <a href="{{ url('pengajuan/berkas') }}" class="dropdown-item"
                                         data-key="t-pages">Berkas Belum Diterima</a>
-                                    <a href="#" class="dropdown-item" data-key="t-pages">Berkas Sudah
+                                    <a href="{{ url('pengajuan/sudah') }}" class="dropdown-item"
+                                        data-key="t-pages">Berkas Sudah
                                         Diterima</a>
                                 </div>
                             </li>
@@ -198,13 +199,12 @@
                 </span>
             </button>
             <div class="dropdown-menu dropdown-menu-end pt-0">
-                <h6 class="dropdown-header">Selamat Datang, {{ $user->name }}</h6>
-                <a class="dropdown-item" href="pages-profile.html"><i
+                <a class="dropdown-item" href="{{ url('pengadilan/profile') }}"><i
                         class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span
                         class="align-middle">Profile</span></a>
-                <a class="dropdown-item d-flex align-items-center" href="contacts-settings.html"><i
+                {{-- <a class="dropdown-item d-flex align-items-center" href="contacts-settings.html"><i
                         class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span
-                        class="align-middle">Settings</span></a>
+                        class="align-middle">Settings</span></a> --}}
                 <a class="dropdown-item" href="{{ url('logout') }}"><i
                         class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span
                         class="align-middle">Logout</span></a>

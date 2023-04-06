@@ -59,9 +59,9 @@
         };
     (chart = new ApexCharts(document.querySelector("#column_chart"), options)).render();
     // Mengambil jumlah data dari variabel PHP
-    var pendingCount = {{ $pendingCount }};
-    var selesaiCount = {{ $selesaiCount }};
-    var ditolakCount = {{ $ditolakCount }};
+    var pendingCountBulanIni = {{ $pendingCountBulanIni }};
+    var selesaiCountBulanIni = {{ $selesaiCountBulanIni }};
+    var ditolakCountBulanIni = {{ $ditolakCountBulanIni }};
 
     // Mengganti data series dengan jumlah data
     options = {
@@ -79,7 +79,7 @@
         dataLabels: {
             enabled: !1
         },
-        series: [pendingCount, selesaiCount, ditolakCount],
+        series: [pendingCountBulanIni, selesaiCountBulanIni, ditolakCountBulanIni],
         labels: ["Diproses", "Selesai", "Ditolak"],
         colors: chartBarColors = getChartColorsArray("chart-donut"),
         legend: {

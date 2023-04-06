@@ -44,6 +44,10 @@ Route::middleware(['auth', 'cekUserLogin:2'])->group(function () {
         Route::post('/pengajuan/simpan', 'save');
         Route::get('/pengajuan/edit', 'edit');
         Route::delete('/pengajuan/hapus/{id}', 'delete');
+        Route::get('/pengajuan/berkas', 'berkas');
+        Route::get('/pengajuan/sudah', 'sudah');
+        Route::get('/pengadilan/profile', 'profile');
+        Route::post('/profile/update', 'update');
     });
 });
 

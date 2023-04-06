@@ -22,7 +22,7 @@
                                     Diproses
                                 </p>
                                 <div>
-                                    <span class="pe-5">{{ $pendingCount }}</span>
+                                    <span class="pe-5">{{ $pendingCountBulanIni }}</span>
                                 </div>
                             </div>
                             <div class="order-wid-list d-flex justify-content-between border-bottom">
@@ -30,7 +30,7 @@
                                         class="mdi mdi-square-rounded font-size-10 text-success me-2"></i>Pengajuan
                                     Selesai</p>
                                 <div>
-                                    <span class="pe-5">{{ $selesaiCount }}</span>
+                                    <span class="pe-5">{{ $selesaiCountBulanIni }}</span>
                                 </div>
                             </div>
                             <div class="order-wid-list d-flex justify-content-between">
@@ -38,7 +38,7 @@
                                         class="mdi mdi-square-rounded font-size-10 text-danger me-2"></i>Pengajuan
                                     Ditolak</p>
                                 <div>
-                                    <span class="pe-5">{{ $ditolakCount }}</span>
+                                    <span class="pe-5">{{ $ditolakCountBulanIni }}</span>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                                                         <div class="flex-grow-1">{{ $d->nama }}</div>
                                                     </div>
                                                 </td>
-                                                <td>1219/pa/03032023/001</td>
+                                                <td>{{ $d->noreg }}</td>
                                                 <td>
                                                     <span>{{ $d->created_at->locale('id')->isoFormat('D MMMM YYYY') }}</span>
                                                 </td>

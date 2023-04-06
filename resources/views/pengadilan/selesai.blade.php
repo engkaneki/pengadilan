@@ -39,11 +39,12 @@
                             <thead>
                                 <tr>
                                     <th style="width: 2%">No</th>
-                                    <th style="width: 10%">@sortablelink('nik', 'NIK')</th>
-                                    <th style="width: 25%">@sortablelink('nama', 'Nama')</th>
-                                    <th style="width: 20%">@sortablelink('created_at', 'Tanggal Pengajuan')</th>
-                                    <th style="width: 35%">@sortablelink('alamat', 'Alamat')</th>
-                                    <th style="width: 10%"></th>
+                                    <th style="width: 10%">NIK</th>
+                                    <th style="width: 10%">No. Register</th>
+                                    <th style="width: 20%">Nama</th>
+                                    <th style="width: 13%">@sortablelink('created_at', 'Tanggal Pengajuan')</th>
+                                    <th style="width: 30%">Alamat</th>
+                                    <th style="width: 17%"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,6 +55,7 @@
                                     <tr>
                                         <td>{{ $nomor++ }}</td>
                                         <td>{{ $d->nik }}</td>
+                                        <td>{{ $d->noreg }}</td>
                                         <td>{{ $d->nama }}</td>
                                         <td>{{ $d->created_at->locale('id')->isoFormat('D MMMM YYYY') }}</td>
                                         <td>{{ $d->alamat }}</td>

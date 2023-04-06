@@ -13,17 +13,55 @@
                         </div>
                         <!-- end user-profile-img -->
 
-                        <div class="mt-n5 position-relative">
-                            <div class="text-center">
-                                <img src="{{ asset('/') }}assets/images/users/admin_killua.jpg" alt=""
-                                    class="avatar-xl rounded-circle img-thumbnail">
-
-                                <div class="mt-3">
-                                    <h5 class="mb-1">{{ $user->name }}</h5>
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="mt-n5 position-relative">
+                                <div class="text-center">
+                                    <label for="upload-avatar">
+                                        <img src="{{ asset('/') }}assets/images/users/admin_killua.jpg" alt=""
+                                            class="avatar-xl rounded-circle img-thumbnail" id="avatar-preview">
+                                        <div class="py-2 text-center">
+                                            <button type="button"
+                                                class="btn btn-secondary btn-sm position-absolute start-50 translate-middle"
+                                                id="upload-avatar-btn">
+                                                <span class="bx bx-camera"></span>
+                                            </button>
+                                        </div>
+                                    </label>
+                                    <input type="file" class="d-none" id="upload-avatar" name="avatar">
+                                    <div class="mt-3">
+                                        <h5 class="mb-1">{{ $user->name }}</h5>
+                                    </div>
                                 </div>
-
                             </div>
-                        </div>
+                            <button type="submit" class="btn btn-primary mt-3">Upload Photo</button>
+                        </form>
+
+
+                        <script>
+                            const avatarPreview = document.getElementById('avatar-preview');
+                            const uploadAvatarBtn = document.getElementById('upload-avatar-btn');
+                            const uploadAvatarInput = document.getElementById('upload-avatar');
+
+                            uploadAvatarBtn.addEventListener('click', () => {
+                                uploadAvatarInput.click();
+                            });
+
+                            uploadAvatarInput.addEventListener('change', () => {
+                                const file = uploadAvatarInput.files[0];
+                                if (file.type.startsWith('image/')) {
+                                    const reader = new FileReader();
+                                    reader.onload = () => {
+                                        avatarPreview.src = reader.result;
+                                    };
+                                    reader.readAsDataURL(file);
+                                } else {
+                                    alert('Please select an image file.');
+                                }
+                            });
+                        </script>
+
+
 
                         <div class="p-4 mt-2">
                             <h5 class="font-size-16">Info :</h5>
@@ -112,7 +150,8 @@
                                                 <div class="row">
                                                     <div class="col-lg-4">
                                                         <div class="mb-lg-0">
-                                                            <label for="current-password-input" class="form-label">password
+                                                            <label for="current-password-input"
+                                                                class="form-label">password
                                                                 sekarang</label>
                                                             <input type="password" class="form-control"
                                                                 name="current_password"

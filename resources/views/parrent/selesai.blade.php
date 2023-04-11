@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header justify-content-between d-flex align-items-center">
-                    <h4 class="card-title">Data Berkas Pengajuan Ditolak</h4>
+                    <h4 class="card-title">Data Berkas Pengajuan Selesai</h4>
                 </div><!-- end card header -->
                 <div class="card-body">
                     <div class="table-responsive">
@@ -41,10 +41,10 @@
                                     <th style="width: 2%">No</th>
                                     <th style="width: 10%">NIK</th>
                                     <th style="width: 10%">No. Register</th>
-                                    <th style="width: 15%">Nama</th>
-                                    <th style="width: 15%">@sortablelink('created_at', 'Tanggal Pengajuan')</th>
-                                    <th style="width: 40%">Keterangan</th>
-                                    <th style="width: 10%"></th>
+                                    <th style="width: 20%">Nama</th>
+                                    <th style="width: 13%">@sortablelink('created_at', 'Tanggal Pengajuan')</th>
+                                    <th style="width: 30%">Alamat</th>
+                                    <th style="width: 17%"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,7 +58,7 @@
                                         <td>{{ $d->noreg }}</td>
                                         <td>{{ $d->nama }}</td>
                                         <td>{{ $d->created_at->locale('id')->isoFormat('D MMMM YYYY') }}</td>
-                                        <td>{{ $d->keterangan }}</td>
+                                        <td>{{ $d->alamat }}</td>
                                         <td>
                                             <button class="btn btn-info" data-bs-toggle="modal"
                                                 data-bs-target="#detail{{ $d->id }}">Detail</button>

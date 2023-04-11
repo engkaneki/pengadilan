@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ModelPengadilan;
+use App\Models\ModelUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -21,6 +22,7 @@ class PengadilanController extends Controller
         $pengguna = $user->name;
 
         $data = ModelPengadilan::where('instansi', '=', $pengguna)->get();
+        $berkasCount = $data->count();
         $pendingCount = $data->where('status', '=', 'Diproses')->count();
         $selesaiCount = $data->where('status', '=', 'Selesai')->count();
         $ditolakCount = $data->where('status', '=', 'Ditolak')->count();
@@ -36,6 +38,7 @@ class PengadilanController extends Controller
             'user' => $user,
             'Berkas' => ModelPengadilan::where('berkas.instansi', $user->name)->paginate(5)->onEachSide('1')->fragment('berkas'),
             'namaBulanTahun' => $namaBulanTahun,
+            'berkasCount' => $berkasCount,
             'pendingCount' => $pendingCount,
             'selesaiCount' => $selesaiCount,
             'ditolakCount' => $ditolakCount,
@@ -115,7 +118,7 @@ class PengadilanController extends Controller
             ->onEachSide('1')
             ->fragment('berkas');
 
-        return view('pengadilan.selesai', [
+        return view('pengadilan.ditolak', [
             'user' => $user,
             'Berkas' => $data,
             'cari' => $cari,
@@ -379,5 +382,37 @@ class PengadilanController extends Controller
         }
 
         return redirect()->back()->with('success', 'Profil berhasil diperbarui');
+    }
+
+    public function photo(Request $request)
+    {
+        $user = Auth::user();
+
+        // Validate file input
+        $validatedData = $request->validate([
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // Check if file input exists
+        if ($request->hasFile('avatar')) {
+            // Get the old avatar path
+            $oldAvatar = $user->photo;
+
+            // Store the new avatar and get the path
+            $avatar = $request->file('avatar')->store('avatars');
+
+            // Update the user's photo column with the new path
+            $user->photo = $avatar;
+
+            // Delete the old avatar file
+            if ($oldAvatar) {
+                Storage::delete($oldAvatar);
+            }
+        }
+
+        // Save the updated user data
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile picture updated successfully.');
     }
 }

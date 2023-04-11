@@ -13,16 +13,14 @@
                         </div>
                         <!-- end user-profile-img -->
 
-                        <form action="{{ url('profile/photo') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('parrent/photo') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mt-n5 position-relative">
                                 <div class="text-center">
                                     <label for="upload-avatar">
                                         <img src="{{ asset('storage/' . $user->photo) }}" alt=""
-                                            class="avatar-xl rounded-circle img-thumbnail" id="avatar-preview"
-                                            style="object-fit: contain;">
-                                        <div class="py-2
-                                            text-center">
+                                            class="avatar-xl rounded-circle img-thumbnail" id="avatar-preview">
+                                        <div class="py-2 text-center">
                                             <button type="button"
                                                 class="btn btn-secondary btn-sm position-absolute start-50 translate-middle"
                                                 id="upload-avatar-btn">
@@ -95,7 +93,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title mb-4">Setting</h5>
-                        <form method="POST" action="{{ url('profile/update') }}">
+                        <form method="POST" action="{{ url('parrent/update') }}">
                             @csrf
                             @method('POST')
                             <div class="card border shadow-none mb-5">
@@ -174,8 +172,7 @@
                                                     <div class="col-lg-4">
                                                         <div class="mb-lg-0">
                                                             <label for="confirm-password-input"
-                                                                class="form-label">konfirmasi
-                                                                password baru</label>
+                                                                class="form-label">konfirmasi password baru</label>
                                                             <input type="password" class="form-control"
                                                                 name="new_password_confirmation"
                                                                 placeholder="Masukkan konfirmasi password baru"

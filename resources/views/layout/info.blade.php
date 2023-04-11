@@ -27,7 +27,7 @@
                             <div class="col">
                                 <div class="mt-md-0 py-3 px-4 mx-2">
                                     <p class="text-white-50 mb-2 text-truncate">Total Pengajuan </p>
-                                    <h3 class="text-white mb-0">{{ $pendingCount }}</h3>
+                                    <h3 class="text-white mb-0">{{ $berkasCount }}</h3>
                                 </div>
                             </div><!-- end col -->
 

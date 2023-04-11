@@ -41,18 +41,19 @@
                                     <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-pages">
-                                    <a href="{{ url('layanan') }}" class="dropdown-item" data-key="t-pages">Pengajuan
+                                    <a href="{{ url('berkas') }}" class="dropdown-item" data-key="t-pages">Pengajuan
                                         Berkas</a>
-                                    <a href="#" class="dropdown-item" data-key="t-pages">Berkas
+                                    <a href="{{ url('berkas/selesai') }}" class="dropdown-item"
+                                        data-key="t-pages">Berkas
                                         Selesai</a>
-                                    <a href="#" class="dropdown-item" data-key="t-pages">Berkas
+                                    <a href="{{ url('berkas/tolak') }}" class="dropdown-item" data-key="t-pages">Berkas
                                         Ditolak</a>
                                 </div>
                             </li>
 
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle arrow-none" id="topnav-uielement"
-                                    role="button">
+                                <a href="{{ url('parrent/users') }}" class="nav-link dropdown-toggle arrow-none"
+                                    id="topnav-uielement" role="button">
                                     <i class="bx bxs-user-detail icon"></i>
                                     <span data-key="t-pages">Daftar Pengguna</span>
                                 </a>
@@ -75,116 +76,6 @@
                     </div>
                 </nav>
             </div>
-        @endif
-
-        {{-- Menu Pelayanan --}}
-        @if ($user->level == 2)
-            <div class="topnav">
-                <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
-                    <div class="collapse navbar-collapse" id="topnav-menu-content">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link dropdown-toggle arrow-none" href="{{ url('/') }}"
-                                    id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <i class="bx bx-home-circle icon"></i>
-                                    <span data-key="t-dashboard">Beranda</span>
-                                </a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle arrow-none" id="topnav-uielement"
-                                    role="button">
-                                    <i class="bx bx-book icon"></i>
-                                    <span data-key="t-pages">Pelayanan</span>
-                                    <div class="arrow-down"></div>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="topnav-pages">
-                                    <a href="{{ url('pengajuan') }}" class="dropdown-item"
-                                        data-key="t-pages">Pengajuan Berkas</a>
-                                    <a href="{{ url('pengajuan/selesai') }}" class="dropdown-item"
-                                        data-key="t-pages">Berkas
-                                        Selesai</a>
-                                    <a href="{{ url('pengajuan/ditolak') }}" class="dropdown-item"
-                                        data-key="t-pages">Berkas
-                                        Ditolak</a>
-                                </div>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle arrow-none" id="topnav-uielement"
-                                    role="button">
-                                    <i class="bx bxs-report icon"></i>
-                                    <span data-key="t-pages">Laporan Berkas</span>
-                                    <div class="arrow-down"></div>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="topnav-pages">
-                                    <a href="{{ url('pengajuan/berkas') }}" class="dropdown-item"
-                                        data-key="t-pages">Berkas Belum Diterima</a>
-                                    <a href="{{ url('pengajuan/sudah') }}" class="dropdown-item"
-                                        data-key="t-pages">Berkas Sudah
-                                        Diterima</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        @endif
-
-        {{-- Menu Petugas --}}
-        @if ($user->level == 3)
-            <div class="topnav">
-                <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
-                    <div class="collapse navbar-collapse" id="topnav-menu-content">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link dropdown-toggle arrow-none" href="{{ url('/') }}"
-                                    id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <i class="bx bx-home-circle icon"></i>
-                                    <span data-key="t-dashboard">Beranda</span>
-                                </a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle arrow-none" id="topnav-uielement"
-                                    role="button">
-                                    <i class="bx bx-book icon"></i>
-                                    <span data-key="t-pages">Pelayanan</span>
-                                    <div class="arrow-down"></div>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="topnav-pages">
-                                    <a href="{{ url('pengajuan/berkas') }}" class="dropdown-item"
-                                        data-key="t-pages">Pengajuan Berkas</a>
-                                    <a href="#" class="dropdown-item" data-key="t-pages">Berkas
-                                        Selesai</a>
-                                    <a href="#" class="dropdown-item" data-key="t-pages">Berkas
-                                        Ditolak</a>
-                                </div>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle arrow-none" id="topnav-uielement"
-                                    role="button">
-                                    <i class="bx bxs-report icon"></i>
-                                    <span data-key="t-pages">Laporan Berkas</span>
-                                    <div class="arrow-down"></div>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="topnav-pages">
-                                    <a href="{{ url('pengajuan/berkas') }}" class="dropdown-item"
-                                        data-key="t-pages">Berkas Belum Diterima</a>
-                                    <a href="#" class="dropdown-item" data-key="t-pages">Berkas Sudah
-                                        Diterima</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        @endif
-
-
     </div>
 
 
@@ -192,23 +83,157 @@
         <div class="dropdown d-inline-block">
             <button type="button" class="btn header-item user text-start d-flex align-items-center"
                 id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="rounded-circle header-profile-user"
-                    src="{{ asset('/') }}assets/images/users/admin_killua.jpg" alt="Header Avatar">
+                <img class="rounded-circle header-profile-user" style="object-fit: contain;"
+                    src="{{ asset('storage/' . $user->photo) }}" alt="Header Avatar">
                 <span class="ms-2 d-none d-xl-inline-block user-item-desc">
                     <span class="user-name">{{ $user->name }} <i class="mdi mdi-chevron-down"></i></span>
                 </span>
             </button>
             <div class="dropdown-menu dropdown-menu-end pt-0">
-                <a class="dropdown-item" href="{{ url('pengadilan/profile') }}"><i
+                <a class="dropdown-item" href="{{ url('parrent/profile') }}"><i
                         class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span
                         class="align-middle">Profile</span></a>
                 {{-- <a class="dropdown-item d-flex align-items-center" href="contacts-settings.html"><i
                         class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span
                         class="align-middle">Settings</span></a> --}}
-                <a class="dropdown-item" href="{{ url('logout') }}"><i
-                        class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span
-                        class="align-middle">Logout</span></a>
+                @endif
+
+                {{-- Menu Pelayanan --}}
+                @if ($user->level == 2)
+                    <div class="topnav">
+                        <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+                            <div class="collapse navbar-collapse" id="topnav-menu-content">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link dropdown-toggle arrow-none" href="{{ url('/') }}"
+                                            id="topnav-dashboard" role="button" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <i class="bx bx-home-circle icon"></i>
+                                            <span data-key="t-dashboard">Beranda</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle arrow-none"
+                                            id="topnav-uielement" role="button">
+                                            <i class="bx bx-book icon"></i>
+                                            <span data-key="t-pages">Pelayanan</span>
+                                            <div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="topnav-pages">
+                                            <a href="{{ url('pengajuan') }}" class="dropdown-item"
+                                                data-key="t-pages">Pengajuan Berkas</a>
+                                            <a href="{{ url('pengajuan/selesai') }}" class="dropdown-item"
+                                                data-key="t-pages">Berkas
+                                                Selesai</a>
+                                            <a href="{{ url('pengajuan/ditolak') }}" class="dropdown-item"
+                                                data-key="t-pages">Berkas
+                                                Ditolak</a>
+                                        </div>
+                                    </li>
+
+                                    <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle arrow-none"
+                                            id="topnav-uielement" role="button">
+                                            <i class="bx bxs-report icon"></i>
+                                            <span data-key="t-pages">Laporan Berkas</span>
+                                            <div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="topnav-pages">
+                                            <a href="{{ url('pengajuan/berkas') }}" class="dropdown-item"
+                                                data-key="t-pages">Berkas Belum Diterima</a>
+                                            <a href="{{ url('pengajuan/sudah') }}" class="dropdown-item"
+                                                data-key="t-pages">Berkas Sudah
+                                                Diterima</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+            </div>
+
+
+            <div class="d-flex">
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn header-item user text-start d-flex align-items-center"
+                        id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <img class="rounded-circle header-profile-user" src="{{ asset('storage/' . $user->photo) }}"
+                            alt="Header Avatar">
+                        <span class="ms-2 d-none d-xl-inline-block user-item-desc">
+                            <span class="user-name">{{ $user->name }} <i class="mdi mdi-chevron-down"></i></span>
+                        </span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end pt-0">
+                        <a class="dropdown-item" href="{{ url('pengadilan/profile') }}"><i
+                                class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span
+                                class="align-middle">Profile</span></a>
+                        {{-- <a class="dropdown-item d-flex align-items-center" href="contacts-settings.html"><i
+                        class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span
+                        class="align-middle">Settings</span></a> --}}
+                        @endif
+
+                        {{-- Menu Petugas --}}
+                        @if ($user->level == 3)
+                            <div class="topnav">
+                                <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+                                    <div class="collapse navbar-collapse" id="topnav-menu-content">
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item">
+                                                <a class="nav-link dropdown-toggle arrow-none"
+                                                    href="{{ url('/') }}" id="topnav-dashboard" role="button"
+                                                    data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                    <i class="bx bx-home-circle icon"></i>
+                                                    <span data-key="t-dashboard">Beranda</span>
+                                                </a>
+                                            </li>
+
+                                            <li class="nav-item dropdown">
+                                                <a href="#" class="nav-link dropdown-toggle arrow-none"
+                                                    id="topnav-uielement" role="button">
+                                                    <i class="bx bx-book icon"></i>
+                                                    <span data-key="t-pages">Pelayanan</span>
+                                                    <div class="arrow-down"></div>
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="topnav-pages">
+                                                    <a href="{{ url('pengajuan/berkas') }}" class="dropdown-item"
+                                                        data-key="t-pages">Pengajuan Berkas</a>
+                                                    <a href="#" class="dropdown-item" data-key="t-pages">Berkas
+                                                        Selesai</a>
+                                                    <a href="#" class="dropdown-item" data-key="t-pages">Berkas
+                                                        Ditolak</a>
+                                                </div>
+                                            </li>
+
+                                            <li class="nav-item dropdown">
+                                                <a href="#" class="nav-link dropdown-toggle arrow-none"
+                                                    id="topnav-uielement" role="button">
+                                                    <i class="bx bxs-report icon"></i>
+                                                    <span data-key="t-pages">Laporan Berkas</span>
+                                                    <div class="arrow-down"></div>
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="topnav-pages">
+                                                    <a href="{{ url('pengajuan/berkas') }}" class="dropdown-item"
+                                                        data-key="t-pages">Berkas Belum Diterima</a>
+                                                    <a href="#" class="dropdown-item" data-key="t-pages">Berkas
+                                                        Sudah
+                                                        Diterima</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                        @endif
+
+
+
+                        <a class="dropdown-item" href="{{ url('logout') }}"><i
+                                class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span
+                                class="align-middle">Logout</span></a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>

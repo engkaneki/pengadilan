@@ -30,8 +30,20 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 Route::middleware(['auth', 'cekUserLogin:1'])->group(function () {
-    Route::get('/', [ParrentController::class, 'index']);
-    Route::get('/parrent', [ParrentController::class, 'index']);
+    Route::controller(ParrentController::class)->group(function () {
+        Route::get('/', 'index');
+        Route::get('/parrent', 'index');
+        Route::get('/parrent/profile', 'profile');
+        Route::post('/parrent/update', 'update');
+        Route::post('/parrent/photo', 'photo');
+        Route::get('/berkas', 'berkas');
+        Route::post('/berkas/proses', 'proses');
+        Route::get('/berkas/selesai', 'selesai');
+        Route::get('/berkas/tolak', 'tolak');
+        Route::get('/parrent/users', 'users');
+        Route::get('/users/reset', 'reset');
+        Route::delete('/users/hapus/{id}', 'hapus');
+    });
 });
 
 Route::middleware(['auth', 'cekUserLogin:2'])->group(function () {
@@ -48,6 +60,7 @@ Route::middleware(['auth', 'cekUserLogin:2'])->group(function () {
         Route::get('/pengajuan/sudah', 'sudah');
         Route::get('/pengadilan/profile', 'profile');
         Route::post('/profile/update', 'update');
+        Route::post('/profile/photo', 'photo');
     });
 });
 

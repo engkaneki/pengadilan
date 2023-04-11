@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header justify-content-between d-flex align-items-center">
-                    <h4 class="card-title">Data Berkas Pengajuan</h4>
+                    <h4 class="card-title">Data Berkas Belum di Terima</h4>
                 </div><!-- end card header -->
                 <div class="card-body">
                     <div class="table-responsive">
@@ -64,6 +64,7 @@
                                                 data-bs-target="#detail{{ $d->id }}">Detail</button>
                                             <button class="btn btn-success" data-bs-toggle="modal"
                                                 data-bs-target="#proses{{ $d->id }}">Proses</button>
+
 
                                             {{-- Modal Detail --}}
                                             <div class="modal fade " id="detail{{ $d->id }}" tabindex="-1"
@@ -148,67 +149,41 @@
                                             </div><!-- /.modal -->
                                             {{-- end Modal Detail --}}
 
-                                            {{-- Modal Proses --}}
+                                            {{-- Modal Reset --}}
                                             <div class="modal fade " id="proses{{ $d->id }}" tabindex="-1"
                                                 role="dialog" aria-labelledby="exampleModalScrollableTitle"
                                                 aria-hidden="true">
                                                 <div
                                                     class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered">
                                                     <form class="modal-content" method="POST"
-                                                        action="{{ url('berkas/proses') }}">
+                                                        action="{{ url('berkas/terima') }}">
                                                         @csrf
+                                                        @method('GET')
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalScrollableTitle">
-                                                                Proses berkas {{ $d->nama }}</h5>
+                                                                Proses Berkas</h5>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close">
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <div class="col-md-6">
-                                                                <div class="mb-3">
-                                                                    <label class="form-label">NIK</label>
-                                                                    <input type="number" class="form-control"
-                                                                        name="nik" id="nik"
-                                                                        value="{{ $d->nik }}" readonly>
-                                                                    <input type="number" class="form-control"
-                                                                        name="id" id="id"
-                                                                        value="{{ $d->id }}" readonly
-                                                                        hidden="true">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="mb-3">
-                                                                    <label class="form-label">Nama</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="nama" id="nama"
-                                                                        value="{{ $d->nama }}" readonly>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Proses</label>
-                                                                <div class="col-md-3">
-                                                                    <select class="form-select" name="status">
-                                                                        <option value="Selesai">Selesai</option>
-                                                                        <option value="Ditolak">Ditolak</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Keterangan</label>
-                                                                <textarea name="ket" id="ket" cols="30" rows="10" class="form-control"></textarea>
-                                                            </div>
+                                                            <h5>Terima Berkas atas nama {{ $d->nama }}
+                                                                <strong>?</strong>
+                                                            </h5>
+                                                            <input type="text" value="{{ $d->id }}"
+                                                                name="id" hidden="true">
                                                         </div>
                                                         <!-- end modalbody -->
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-danger"
                                                                 data-bs-dismiss="modal">Batal</button>
-                                                            <button type="submit" class="btn btn-success">Simpan</button>
+                                                            <button type="submit" class="btn btn-success">Terima</button>
                                                         </div>
                                                     </form><!-- /.modal-content -->
                                                 </div><!-- /.modal-dialog -->
                                             </div><!-- /.modal -->
-                                            {{-- end Modal Proses --}}
+                                            {{-- end Modal Reset --}}
+
 
                                         </td>
                                     </tr>
@@ -223,5 +198,4 @@
         </div>
         <!-- end col -->
     </div>
-
 @endsection

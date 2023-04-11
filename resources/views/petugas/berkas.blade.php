@@ -224,4 +224,97 @@
         <!-- end col -->
     </div>
 
+    <div class="modal fade " id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered">
+            <form class="modal-content" method="POST" action="{{ url('pengajuan/simpan') }}"
+                enctype="multipart/form-data">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">Buat Pengajuan Berkas Baru</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">NIK</label>
+                            <input type="number"
+                                class="form-control @error('nik')
+                                is-invalid
+                            @enderror"
+                                name="nik" id="nik" placeholder="Masukkan NIK Pelapor"
+                                value="{{ old('nik') }}">
+                            @error('nik')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nama</label>
+                        <input type="text"
+                            class="form-control @error('nama')
+                            is-invalid
+                        @enderror"
+                            name="nama" id="nama" placeholder="Masukkan Nama Pelapor"
+                            value="{{ old('nama') }}">
+                        @error('nama')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Alamat</label>
+                        <textarea name="alamat" id="alamat" cols="30" rows="10"
+                            class="form-control @error('alamat')
+                            is-invalid
+                        @enderror">{{ old('alamat') }}</textarea>
+                        @error('alamat')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <h3>
+                        Berkas Persyaratan
+                    </h3>
+                    <div class="mb-3">
+                        <label class="form-label">KTP</label>
+                        <input type="file"
+                            class="form-control @error('ktp')
+                            is-invalid
+                        @enderror"
+                            name="ktp" id="ktp" value="{{ old('ktp') }}" accept="image/*">
+                        @error('ktp')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Kartu Keluarga</label>
+                        <input type="file" name="kk" id="kk"
+                            class="form-control @error('kk')
+                            is-invalid
+                        @enderror"
+                            accept="image/*">
+                        @error('kk')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Akta Cerai</label>
+                        <input type="file" name="akta" id="akta"
+                            class="form-control @error('akta')
+                            is-invalid
+                        @enderror"
+                            accept="image/*">
+                        @error('akta')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <!-- end modalbody -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-success">Simpan</button>
+                </div>
+            </form><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 @endsection

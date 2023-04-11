@@ -29,7 +29,7 @@ class ParrentController extends Controller
         $selesaiCountBulanIni = $dataBulanIni->where('status', '=', 'Selesai')->count();
         $ditolakCountBulanIni = $dataBulanIni->where('status', '=', 'Ditolak')->count();
 
-        return view('pengadilan.dashboard')->with([
+        return view('parrent.dashboard')->with([
             'user' => $user,
             'Berkas' => ModelPengadilan::paginate(5)->onEachSide('1')->fragment('berkas'),
             'namaBulanTahun' => $namaBulanTahun,
@@ -242,6 +242,80 @@ class ParrentController extends Controller
         $user = ModelUsers::find($id);
         $user->password = bcrypt('123456');
         $user->save();
+        return redirect()->back();
+    }
+
+    public function add(Request $r)
+    {
+        $username = $r->username;
+        $name = $r->name;
+        $role = $r->role;
+
+        $user = new ModelUsers();
+        $user->username = $username;
+        $user->name = $name;
+        $user->level = $role;
+        $user->password = bcrypt('123456');
+        $user->photo = "ava/admin_killua.jpg";
+        $user->save();
+
+        return redirect()->back();
+    }
+
+    public function belum(Request $r)
+    {
+        $user = Auth::user();
+        $cari = $r->query('cari');
+        $data = ModelPengadilan::sortable()
+            ->where('status', '=', 'Selesai')
+            ->whereNull('berkas.berkas')
+            ->when(!empty($cari), function ($query) use ($cari) {
+                return $query->where(function ($query) use ($cari) {
+                    $query->where('berkas.nik', 'like', '%' . $cari . '%')
+                        ->orWhere('berkas.nama', 'like', '%' . $cari . '%');
+                });
+            })
+            ->paginate(5)
+            ->onEachSide('1')
+            ->fragment('berkas');
+
+        return view('parrent.belum', [
+            'user' => $user,
+            'Berkas' => $data,
+            'cari' => $cari,
+        ]);
+    }
+
+    public function sudah(Request $r)
+    {
+        $user = Auth::user();
+        $cari = $r->query('cari');
+        $data = ModelPengadilan::sortable()
+            ->where('status', '=', 'Selesai')
+            ->whereNotNull('berkas.berkas')
+            ->when(!empty($cari), function ($query) use ($cari) {
+                return $query->where(function ($query) use ($cari) {
+                    $query->where('berkas.nik', 'like', '%' . $cari . '%')
+                        ->orWhere('berkas.nama', 'like', '%' . $cari . '%');
+                });
+            })
+            ->paginate(5)
+            ->onEachSide('1')
+            ->fragment('berkas');
+
+        return view('parrent.sudah', [
+            'user' => $user,
+            'Berkas' => $data,
+            'cari' => $cari,
+        ]);
+    }
+
+    public function terima(Request $r)
+    {
+        $id = $r->id;
+        $berkas = ModelPengadilan::find($id);
+        $berkas->berkas = "sudah";
+        $berkas->save();
         return redirect()->back();
     }
 }

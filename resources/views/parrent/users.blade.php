@@ -9,6 +9,9 @@
                 </div><!-- end card header -->
                 <div class="card-body">
                     <div class="table-responsive">
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambah">Buat User</button>
+                        <br>
+                        <br>
                         <div class="card">
                             <div class="card-body">
                                 <form class="row gx-3 gy-2 align-items-center" method="GET">
@@ -139,4 +142,63 @@
         </div>
         <!-- end col -->
     </div>
+
+    <div class="modal fade " id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered">
+            <form class="modal-content" method="POST" action="{{ url('users/tambah') }}"
+                enctype="multipart/form-data">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">Buat User Baru</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text"
+                                class="form-control @error('username')
+                                is-invalid
+                            @enderror"
+                                name="username" id="username" placeholder="Masukkan username"
+                                value="{{ old('username') }}">
+                            @error('username')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Nama</label>
+                            <input type="text"
+                                class="form-control @error('name')
+                                is-invalid
+                            @enderror"
+                                name="name" id="name" placeholder="Masukkan Nama" value="{{ old('name') }}">
+                            @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Role</label>
+                        <div class="col-md-3">
+                            <select class="form-select" name="role">
+                                <option value="1">Admin</option>
+                                <option value="2">Pengadilan</option>
+                                <option value="3">Petugas</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- end modalbody -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-success">Simpan</button>
+                </div>
+            </form><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 @endsection

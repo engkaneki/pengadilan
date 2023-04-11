@@ -43,6 +43,10 @@ Route::middleware(['auth', 'cekUserLogin:1'])->group(function () {
         Route::get('/parrent/users', 'users');
         Route::get('/users/reset', 'reset');
         Route::delete('/users/hapus/{id}', 'hapus');
+        Route::post('/users/tambah', 'add');
+        Route::get('/berkas/belum', 'belum');
+        Route::get('/berkas/sudah', 'sudah');
+        Route::get('/berkas/terima', 'terima');
     });
 });
 
@@ -65,6 +69,20 @@ Route::middleware(['auth', 'cekUserLogin:2'])->group(function () {
 });
 
 Route::middleware(['auth', 'cekUserLogin:3'])->group(function () {
-    Route::get('/', [PetugasController::class, 'index']);
-    Route::get('/petugas', [PetugasController::class, 'index']);
+    Route::controller(PetugasController::class)->group(function () {
+        Route::get('/', 'index');
+        Route::get('/petugas', 'index');
+        Route::get('/berkas', 'berkas');
+        Route::post('/berkas/proses', 'proses');
+        Route::get('/berkas/selesai', 'selesai');
+        Route::get('/berkas/tolak', 'tolak');
+        Route::get('/berkas/belum', 'belum');
+        Route::get('/berkas/sudah', 'sudah');
+        Route::get('/berkas/terima', 'terima');
+        Route::get('/berkas/antar', 'antar');
+        Route::get('/berkas/oke', 'oke');
+        Route::get('/petugas/profile', 'profile');
+        Route::post('/petugas/update', 'update');
+        Route::post('/petugas/photo', 'photo');
+    });
 });

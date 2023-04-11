@@ -67,9 +67,10 @@
                                     <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-pages">
-                                    <a href="{{ url('pengajuan/berkas') }}" class="dropdown-item"
-                                        data-key="t-pages">Berkas Belum Diterima</a>
-                                    <a href="#" class="dropdown-item" data-key="t-pages">Berkas Sudah Diterima</a>
+                                    <a href="{{ url('berkas/belum') }}" class="dropdown-item" data-key="t-pages">Berkas
+                                        Belum Diterima</a>
+                                    <a href="{{ url('berkas/sudah') }}" class="dropdown-item" data-key="t-pages">Berkas
+                                        Sudah Diterima</a>
                                 </div>
                             </li>
                         </ul>
@@ -198,11 +199,13 @@
                                                     <div class="arrow-down"></div>
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="topnav-pages">
-                                                    <a href="{{ url('pengajuan/berkas') }}" class="dropdown-item"
+                                                    <a href="{{ url('berkas') }}" class="dropdown-item"
                                                         data-key="t-pages">Pengajuan Berkas</a>
-                                                    <a href="#" class="dropdown-item" data-key="t-pages">Berkas
+                                                    <a href="{{ url('berkas/selesai') }}" class="dropdown-item"
+                                                        data-key="t-pages">Berkas
                                                         Selesai</a>
-                                                    <a href="#" class="dropdown-item" data-key="t-pages">Berkas
+                                                    <a href="{{ url('berkas/tolak') }}" class="dropdown-item"
+                                                        data-key="t-pages">Berkas
                                                         Ditolak</a>
                                                 </div>
                                             </li>
@@ -215,9 +218,10 @@
                                                     <div class="arrow-down"></div>
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="topnav-pages">
-                                                    <a href="{{ url('pengajuan/berkas') }}" class="dropdown-item"
+                                                    <a href="{{ url('berkas/antar') }}" class="dropdown-item"
                                                         data-key="t-pages">Berkas Belum Diterima</a>
-                                                    <a href="#" class="dropdown-item" data-key="t-pages">Berkas
+                                                    <a href="{{ url('berkas/oke') }}" class="dropdown-item"
+                                                        data-key="t-pages">Berkas
                                                         Sudah
                                                         Diterima</a>
                                                 </div>
@@ -226,14 +230,36 @@
                                     </div>
                                 </nav>
                             </div>
-                        @endif
+                    </div>
+
+
+                    <div class="d-flex">
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item user text-start d-flex align-items-center"
+                                id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <img class="rounded-circle header-profile-user"
+                                    src="{{ asset('storage/' . $user->photo) }}" alt="Header Avatar">
+                                <span class="ms-2 d-none d-xl-inline-block user-item-desc">
+                                    <span class="user-name">{{ $user->name }} <i
+                                            class="mdi mdi-chevron-down"></i></span>
+                                </span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end pt-0">
+                                <a class="dropdown-item" href="{{ url('petugas/profile') }}"><i
+                                        class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i>
+                                    <span class="align-middle">Profile</span></a>
+                                {{-- <a class="dropdown-item d-flex align-items-center" href="contacts-settings.html"><i
+                        class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span
+                        class="align-middle">Settings</span></a> --}}
+                                @endif
 
 
 
-                        <a class="dropdown-item" href="{{ url('logout') }}"><i
-                                class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span
-                                class="align-middle">Logout</span></a>
+                                <a class="dropdown-item" href="{{ url('logout') }}"><i
+                                        class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span
+                                        class="align-middle">Logout</span></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
